@@ -72,8 +72,11 @@ while True:
         except ValueError:
             print(f"ValueError: Your input is not a valid number")
             continue
-        except ZeroDivisionError:
-            print(f"ValueError: Your input is not a valid number")
+        # except ZeroDivisionError:
+        #     print(f"ValueError: Your input is not a valid number") #Not working at the moment
+        if x == 0 or y == 0:
+            print("Error it cant be divided with zero")
+        
         result = x / y
         print(f"Result after / operation: {x} / {y} = {result}")
 
@@ -123,15 +126,30 @@ while True:
         print(f"Result after square root operation: Square Root: {x} = {result}")
         
     if z == "9" or z.lower() == "sin" or z.lower() == "sine":
-        
+        try:
+            x = float(input("First number: "))
+        except ValueError:
+            print(f"ValueError: Your input is not a valid number")
+        result = math.sin(x)
+        print(f"Result after sine operation: sine: {x} = {result}")
     
+    if z == "10" or z.lower() == "cos" or z.lower() == "cosine":
+        try:
+            x = float(input("First number: "))
+        except ValueError:
+            print(f"ValueError: Your input is not a valid number")
+        result = math.sin(x)
+        print(f"Result after cosine operation: cosine: {x} = {result}")
+        
+    if z == "11" or z.lower() == "tan" or z.lower() == "tangent":
+        try:
+            x = float(input("First number: "))
+        except ValueError:
+            print(f"ValueError: Your input is not a valid number")
+        result = math.sin(x)
+        print(f"Result after tangent operation: tangent: {x} = {result}")
+        
     if z == "0" or z.lower() == "exit":
         print("Thanks for using the simple calculator, have a nice day")
         exit_loop = True
         break
-
-
-    # print("9. sin - Sine")
-    # print("10. cos - Cosine")
-    # print("11. tan - Tangent")
-    # print("0. Exit program")
