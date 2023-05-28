@@ -1,4 +1,7 @@
 #Simple Calculator maybe if i will have free time, will try to make it more realistic with real calculator that would have more functionality
+# And YES i understand that allot of code repeat it self, While loop inside of While loop is bad, 
+# and that it will allways print out the meniu and its a minus because you dont see console and you need to scroll up to check your results.
+
 
 # to add 
 #Decimal Precision: 
@@ -12,7 +15,8 @@
 # This can be useful when performing calculations that depend on previous results, eliminating the need for the user to re-enter values.
 #Refractor code:
 #Refractor the code so it would be more easy to read it, and it would be closer looking as a real calculator with basic functionality.
-#Remake this calculator so it would work from opening caculator.exe file and it would have an interface similar as a calculator with basic funcionality.
+#Adding UI and making it as a .exe fyle:
+#Remake calculator so it would work from opening caculator.exe file and it would have an interface similar as a calculator with basic funcionality.
 
 import math
 import sys
@@ -107,21 +111,65 @@ while True:
 
 
     if z == "3" or z== "/":
-        try:
-            x = float(input("First number: "))
-            y = float(input("Second number: "))
-        except (ValueError,NameError):
-            print(f"ValueError: Your input is not a valid number")
-            continue
-        
-        # except ZeroDivisionError:
-        #     print(f"ValueError: Your input is not a valid number") #Not working at the moment
-        # if x == 0 or y == 0:
-        #     print("Error it cant be divided with zero")
-        
-        result = x / y
-        print(f"Result after / operation: {x} / {y} = {result}")
-
+        while True:
+            try:
+                x = float(input("First number: "))
+                y = float(input("Second number: "))
+            except (ValueError,NameError,ZeroDivisionError):
+                print(f"ValueError: Your input is not a valid number, or it can't be divided by zero")
+                continue
+            
+            if x > 0 and y > 0:
+                result = x / y
+                print(f"Result after / operation: {x} / {y} = {result}")
+                
+                while True:
+                    print("If you want to repeat operation write 1 or word repeat or again.\nIf you want to exit write exit or number 2")
+                    excecute = input("Wirte operation that you would like to excecute from shown meniu above: ")
+                    
+                    if excecute == "1" or excecute.lower() == "repeat" or excecute.lower() == "again":
+                        try:
+                            x = float(input("First number: "))
+                            y = float(input("Second number: "))
+                        except (ValueError,NameError,ZeroDivisionError):
+                            print(f"ValueError: Your input is not a valid number, or it can't be divided by zero")
+                            continue
+                        result = x / y
+                        print(f"Result after / operation: {x} / {y} = {result}")
+                    elif excecute == "2" or excecute.lower() == "exit":
+                        print("Thanks for using the simple calculator, have a nice day")
+                        # exit_loop = True
+                        sys.exit()
+                        # break
+                        
+            if x <= 0 or y <= 0:
+                print("One of numbers that you wrote are 0 and it can't be divided by zero, please write number that is not a 0")
+            try:
+                x = float(input("First number: "))
+                y = float(input("Second number: "))
+            except (ValueError,NameError,ZeroDivisionError):
+                print(f"ValueError: Your input is not a valid number, or it can't be divided by zero")
+                continue
+            result = x / y
+            print(f"Result after / operation: {x} / {y} = {result}")
+            
+            while True:
+                print("If you want to repeat operation write 1 or word repeat or again.\nIf you want to exit write exit or number 2")
+                excecute = input("Wirte operation that you would like to excecute from shown meniu above: ")
+                if excecute == "1" or excecute.lower() == "repeat" or excecute.lower() == "again":
+                    try:
+                        x = float(input("First number: "))
+                        y = float(input("Second number: "))
+                    except (ValueError,NameError,ZeroDivisionError):
+                        print(f"ValueError: Your input is not a valid number, or it can't be divided by zero")
+                        continue
+                    result = x / y
+                    print(f"Result after / operation: {x} / {y} = {result}")
+                elif excecute == "2" or excecute.lower() == "exit":
+                    print("Thanks for using the simple calculator, have a nice day")
+                    # exit_loop = True
+                    sys.exit()
+                    # break
 
     if z == "4" or z == "*":
         try:
